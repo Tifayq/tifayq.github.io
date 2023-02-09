@@ -1,6 +1,14 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.9.0"
-gem "github-pages", "~> 214"
-gem "rake", "~> 13.0.3"
-gem "slugify", "~> 1.0.7"
+gem "autoprefixer-rails"
+gem "html-proofer"
+gem "image_optim"
+gem "jekyll", '3.8.6'
+gem "jekyll-assets"
+gem "jekyll-paginate"
+gem "jekyll-sitemap"
+gem "jemoji"
+gem "mini_magick"
+gem "sass"
+gem "sprockets", "~> 3.7"
+gem "uglifier"
