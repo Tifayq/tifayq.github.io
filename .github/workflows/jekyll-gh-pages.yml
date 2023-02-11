@@ -41,7 +41,7 @@ jobs:
       - name: Run Deploy
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run build
+        run: npm run publish
         
   # Deployment job
   deploy:
