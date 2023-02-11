@@ -39,7 +39,9 @@ jobs:
       - name: Install Node Package
         run: npm i && npm run setup
       - name: Run Deploy
-        run: bundle exec jekyll build
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run build
         
   # Deployment job
   deploy:
