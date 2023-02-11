@@ -39,7 +39,7 @@ jobs:
       - name: Install Node Package
         run: npm i && npm run setup
       - name: Run Deploy
-        run: npm run publish
+        run: bundle exec jekyll build
         
   # Deployment job
   deploy:
