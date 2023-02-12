@@ -28,12 +28,13 @@ bundle exec jekyll build
 # Delete and move files.
 echo "Deploying to gh-pages"
 mkdir /tmp/gh-pages
+mv _site/* /tmp/gh-pages
+
 cd /tmp/gh-pages
 git init && \
 git config --global user.name "${GITHUB_ACTOR}" && \
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
 
-mv _site/* /tmp/gh-pages
 
 git add -fA
 
