@@ -46,9 +46,9 @@ jobs:
         env:
           GITHUB_EMAIL: "tifayq@163.com"
           GITHUB_USERNAME: "Yin Qian"
-          PUBLISH_REPO: https://${{secrets.GITHUB_ACTOR}}:${{secrets.GITHUB_TOKEN}}@github.com/${{secrets.GITHUB_REPOSITORY}}.git
+          PUBLISH_REPO: https://${{env.GITHUB_ACTOR}}:${{secrets.GITHUB_TOKEN}}@github.com/${{env.GITHUB_REPOSITORY}}.git
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./_site
+          PUBLISH_DIR: ./public
           # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
         
   # Deployment job

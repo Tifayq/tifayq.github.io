@@ -26,6 +26,8 @@ echo "Building"
 yarn install --modules-folder ./_assets/yarn
 bundle exec jekyll build
 
+mv _site/ public/
+
 ls .
 echo pwd
 
