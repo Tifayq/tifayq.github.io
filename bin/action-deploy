@@ -16,21 +16,11 @@ echo "Setting up JS dependencies via Yarn."
 npm install -g yarn
 
 echo "Setting up git"
-#git config --global user.name "${GITHUB_ACTOR}"
-#git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
-echo "$(pwd)"
-exit 0;
+git config --global user.name "${GITHUB_ACTOR}"
+git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
 echo "cloning"
-git clone --depth=1 --single-branch --branch ${GITHUB_REF_NAME} https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ./
-
-# Checkout gh-pages branch.
-if [ `git branch | grep gh-pages` ]
-then
-  git branch -D gh-pages
-fi
-git checkout -b gh-pages
+git clone --depth=1 --single-branch --branch gh-pages https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git /tmp/gh-pages
 
 # Build site.
 yarn install --modules-folder ./_assets/yarn
@@ -38,10 +28,10 @@ bundle exec jekyll build
 
 # Delete and move files.
 find . -maxdepth 1 ! -name '_site' ! -name '.git' ! -name '.gitignore' -exec rm -rf {} \;
-mv _site/* .
-rm -R _site/
+mv _site/* /tmp/gh-pages
 
 # Push to gh-pages.
+cd /tmp/gh-pages
 git add -fA
 git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
 git push -f -q origin gh-pages
