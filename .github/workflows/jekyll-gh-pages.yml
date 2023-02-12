@@ -41,6 +41,15 @@ jobs:
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run action-deploy
+      - name: Push to Github
+        uses: x-actions/gh-pages@release/v1
+        env:
+          GITHUB_EMAIL: "tifayq@163.com"
+          GITHUB_USERNAME: "Yin Qian"
+          PUBLISH_REPO: https://${{secrets.GITHUB_ACTOR}}:${{secrets.GITHUB_TOKEN}}@github.com/${{secrets.GITHUB_REPOSITORY}}.git
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./site
+          # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
         
   # Deployment job
   deploy:
