@@ -19,6 +19,9 @@ echo "Setting up git"
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
+echo "cloning"
+git clone --depth=1 --single-branch --branch ${GITHUB_REF_NAME} https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git ./
+
 # Checkout gh-pages branch.
 if [ `git branch | grep gh-pages` ]
 then
