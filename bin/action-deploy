@@ -7,6 +7,14 @@ set -e
 
 echo "Started deploying"
 
+echo "Setting up Ruby dependencies via Bundler."
+gem install bundler --conservative
+bundle check || bundle install
+bundle update
+
+echo "Setting up JS dependencies via Yarn."
+npm install -g yarn
+
 echo "Setting up git"
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
