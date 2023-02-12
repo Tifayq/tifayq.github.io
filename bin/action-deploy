@@ -6,7 +6,8 @@
 set -e
 
 echo "Started deploying"
-remote_repo="https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
+echo "variables ${GITHUB_ACTOR}, ${GITHUB_TOKEN}, ${GITHUB_REPOSITORY}"
+remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
 remote_branch="gh-pages"
 
 echo "Setting up Ruby dependencies via Bundler."
