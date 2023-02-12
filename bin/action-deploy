@@ -21,6 +21,7 @@ git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
 echo "cloning"
 git clone --depth=1 --single-branch --branch gh-pages https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git /tmp/gh-pages
+rm -rf /tmp/gh-pages/*
 
 # Build site.
 yarn install --modules-folder ./_assets/yarn
