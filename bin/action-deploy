@@ -26,6 +26,9 @@ echo "Building"
 yarn install --modules-folder ./_assets/yarn
 bundle exec jekyll build
 
+ls .
+echo pwd
+
 # Delete and move files.
 # echo "Deploying to gh-pages"
 # mkdir /tmp/gh-pages
