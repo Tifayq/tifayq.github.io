@@ -42,7 +42,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run action-deploy
       - name: Push to Github
-        uses: x-actions/gh-pages@release/v1
+        uses: x-actions/gh-pages@v1.0
         env:
           GITHUB_EMAIL: "tifayq@163.com"
           GITHUB_USERNAME: "Yin Qian"
