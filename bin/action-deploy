@@ -6,9 +6,10 @@
 set -e
 
 echo "Started deploying"
-echo "variables ${GITHUB_ACTOR}, ${GITHUB_TOKEN}, ${GITHUB_REPOSITORY}"
-remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
-remote_branch="gh-pages"
+
+REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
+REMOTE_BRANCH="gh-pages"
+GIT_LOG=$(git log -1 --pretty=%B)
 
 echo "Setting up Ruby dependencies via Bundler."
 gem install bundler --conservative
@@ -17,9 +18,6 @@ bundle update
 
 echo "Setting up JS dependencies via Yarn."
 npm install -g yarn
-
-# git clone --depth=1 --single-branch --branch gh-pages https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git /tmp/gh-pages
-# rm -rf /tmp/gh-pages/*
 
 # Build site.
 echo "Building"
@@ -39,8 +37,8 @@ git config --global user.name "${GITHUB_ACTOR}" && \
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
 
 git add -fA && \
-git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]" && \
-git push --force $remote_repo master:$remote_branch
+git commit --allow-empty -m "$GIT_LOG [ci skip]" && \
+git push --force $REMOTE_REPO master:$REMOTE_BRANCH
 
 echo "Deployed Successfully!"
 
